@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vendly · Política de privacidad</title>
+    <meta name="description" content="Política de privacidad de Vendly, extensión de Chrome para vender en lives." />
+    <style>
+      :root {
+        --paper: #f7f7f9;
+        --surface: #ffffff;
+        --ink: #17181c;
+        --ink-soft: #3f414c;
+        --muted: #6e707c;
+        --line: #e4e4ea;
+        --accent: #fe2c55;
+        --accent-soft: #ffe9ee;
+        color-scheme: light;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --paper: #0e0e11;
+          --surface: #18181d;
+          --ink: #f1f1f3;
+          --ink-soft: #c6c7ce;
+          --muted: #8a8b96;
+          --line: #26262d;
+          --accent: #fe2c55;
+          --accent-soft: #3a1520;
+          color-scheme: dark;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font:
+          15px/1.6 system-ui,
+          -apple-system,
+          'Segoe UI',
+          Roboto,
+          sans-serif;
+      }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 32px 16px 64px;
+      }
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+      .brand {
+        font-weight: 800;
+        font-size: 22px;
+        letter-spacing: -0.02em;
+        color: var(--accent);
+      }
+      nav {
+        display: inline-flex;
+        gap: 4px;
+        padding: 3px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--surface);
+      }
+      nav a {
+        padding: 4px 12px;
+        border-radius: 999px;
+        color: var(--ink-soft);
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      nav a[aria-current='true'] {
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+      article {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 24px;
+      }
+      h1 {
+        font-size: 26px;
+        line-height: 1.25;
+        margin: 0 0 4px;
+      }
+      h2 {
+        font-size: 17px;
+        margin: 28px 0 8px;
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 13px;
+        margin: 0 0 16px;
+      }
+      p,
+      li {
+        color: var(--ink-soft);
+      }
+      a {
+        color: var(--accent);
+      }
+      .summary {
+        background: var(--accent-soft);
+        border-radius: 12px;
+        padding: 12px 16px 12px 32px;
+        margin: 16px 0;
+      }
+      .table-wrap {
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      th,
+      td {
+        text-align: left;
+        vertical-align: top;
+        padding: 8px 10px;
+        border-bottom: 1px solid var(--line);
+      }
+      th {
+        color: var(--ink);
+      }
+      code {
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <span class="brand">vendly</span>
+        <nav aria-label="Idioma / Language / Idioma">
+          <a href="#es" data-lang="es">Español</a>
+          <a href="#en" data-lang="en">English</a>
+          <a href="#pt" data-lang="pt">Português</a>
+        </nav>
+      </header>
+
+      <article id="es" lang="es">
+        <h1>Política de privacidad de Vendly</h1>
+        <p class="meta">
+          Vigente desde el 27 de septiembre de 2026 · Contacto:
+          <a href="mailto:salazar199925@gmail.com">salazar199925@gmail.com</a>
+        </p>
+        <p>
+          Vendly es una extensión de Chrome para vendedores que venden en transmisiones en vivo: catálogo con stock, captura del
+          chat del live, pedidos, cobros y reportes. Esta política explica qué datos maneja, dónde quedan y cómo borrarlos.
+        </p>
+        <ul class="summary">
+          <li>
+            <strong>Todo se guarda en tu navegador.</strong> Vendly no tiene servidores ni cuentas: no envía tus datos a nadie, ni
+            al desarrollador.
+          </li>
+          <li><strong>No hay analítica, publicidad ni rastreadores</strong>, y la extensión no carga código remoto.</li>
+          <li><strong>Tú decides cuándo borrar:</strong> desde Ajustes o desinstalando la extensión.</li>
+        </ul>
+
+        <h2>1. Qué datos maneja</h2>
+        <div class="table-wrap">
+          <table>
+            <tr>
+              <th>Dato</th>
+              <th>De dónde sale</th>
+              <th>Para qué se usa</th>
+            </tr>
+            <tr>
+              <td>Usuario de TikTok de cada tienda</td>
+              <td>Lo escribes tú al agregar la tienda</td>
+              <td>Reconocer tus lives y guardarlos por tienda</td>
+            </tr>
+            <tr>
+              <td>Nombre visible y texto de los mensajes del chat</td>
+              <td>La página del live abierta en esa pestaña</td>
+              <td>Mostrar el chat por persona y crear pedidos desde los comentarios</td>
+            </tr>
+            <tr>
+              <td>Alias y notas de tus clientes</td>
+              <td>Los escribes tú</td>
+              <td>Reconocer a tus clientes en lives futuros</td>
+            </tr>
+            <tr>
+              <td>Catálogo, stock, pedidos, descuentos y cobros</td>
+              <td>Los registras tú o los importas desde un archivo</td>
+              <td>El funcionamiento del CRM</td>
+            </tr>
+            <tr>
+              <td>Preferencias (idioma, tema, tienda activa, modo prueba, último respaldo)</td>
+              <td>Tus elecciones en el panel</td>
+              <td>Recordar cómo usas la extensión</td>
+            </tr>
+          </table>
+        </div>
+        <p>
+          Vendly lee el chat <strong>solo</strong> de la pestaña de TikTok Live que tienes abierta, y lo guarda solo mientras el
+          panel de Vendly está abierto. Los lives de otras cuentas se guardan únicamente si activas el "modo prueba" y lo pides en
+          ese live. Vendly <strong>no</strong> lee ni guarda contraseñas, mensajes privados, datos de pago, tu historial de
+          navegación ni el contenido de otros sitios.
+        </p>
+
+        <h2>2. Dónde se guardan</h2>
+        <p>
+          En el almacenamiento local de la extensión, dentro de tu perfil de Chrome, en ese equipo. Nada se sincroniza ni sale de
+          tu navegador. Tú puedes descargar un <strong>Excel</strong> con los pedidos de un live y un <strong>respaldo</strong>
+          (<code>.sqlite3</code>) con todos tus datos. El respaldo no está cifrado: guárdalo en un lugar seguro, porque contiene
+          los nombres y mensajes de tus clientes.
+        </p>
+
+        <h2>3. Con quién se comparten</h2>
+        <p>
+          Con nadie. Vendly no vende, no alquila y no transfiere datos a terceros, ni los usa para publicidad, para evaluar
+          solvencia o para fines distintos de su propósito único. El uso de la información cumple con la
+          <a href="https://developer.chrome.com/docs/webstore/program-policies/user-data-faq"
+            >Política de datos de usuario de la Chrome Web Store</a
+          >, incluidos los requisitos de uso limitado.
+        </p>
+
+        <h2>4. Permisos</h2>
+        <ul>
+          <li><strong>Panel lateral:</strong> mostrar el CRM al lado del live, sin tapar la transmisión.</li>
+          <li>
+            <strong>Inyectar scripts:</strong> activar la captura en pestañas de TikTok que ya estaban abiertas al instalar o
+            actualizar.
+          </li>
+          <li>
+            <strong>Acceso a <code>www.tiktok.com</code>:</strong> leer el chat del live abierto. Fuera de una página de live,
+            solo revisa la URL.
+          </li>
+        </ul>
+
+        <h2>5. Cuánto tiempo se guardan y cómo borrarlos</h2>
+        <ul>
+          <li>
+            <strong>Ajustes → Borrar todos mis datos:</strong> elimina de inmediato todas tus tiendas, con su catálogo, clientes,
+            pedidos y el chat guardado.
+          </li>
+          <li><strong>Desinstalar la extensión:</strong> Chrome borra todo su almacenamiento local.</li>
+          <li>
+            <strong>Ajustes → Eliminar esta tienda:</strong> oculta la tienda y todo lo suyo del panel. Sus datos siguen en el
+            almacenamiento local hasta que uses "Borrar todos mis datos" o desinstales la extensión.
+          </li>
+        </ul>
+        <p>Los archivos de Excel y de respaldo que descargaste los borras tú desde tu equipo.</p>
+
+        <h2>6. Datos de terceros</h2>
+        <p>
+          Los mensajes del chat de un live son públicos para quienes lo ven. Vendly los guarda solo en tu equipo para que atiendas
+          los pedidos. Como vendedor, eres responsable del uso que les des y de respetar las leyes de protección de datos que te
+          apliquen.
+        </p>
+
+        <h2>7. Menores de edad</h2>
+        <p>Vendly es una herramienta para vendedores y no está dirigida a menores de edad.</p>
+
+        <h2>8. Cambios</h2>
+        <p>
+          Si esta política cambia, se publica aquí con la fecha actualizada. Si afecta cómo se usan tus datos, se avisa en la
+          ficha de la extensión.
+        </p>
+
+        <h2>9. Contacto</h2>
+        <p>Dudas, pedidos o reclamos sobre privacidad: <a href="mailto:salazar199925@gmail.com">salazar199925@gmail.com</a>.</p>
+      </article>
+
+      <article id="en" lang="en">
+        <h1>Vendly Privacy Policy</h1>
+        <p class="meta">
+          Effective September 27, 2026 · Contact: <a href="mailto:salazar199925@gmail.com">salazar199925@gmail.com</a>
+        </p>
+        <p>
+          Vendly is a Chrome extension for sellers who sell on live streams: a catalog with stock, capture of the live chat,
+          orders, payments and reports. This policy explains what data it handles, where it stays and how to delete it.
+        </p>
+        <ul class="summary">
+          <li>
+            <strong>Everything is stored in your browser.</strong> Vendly has no servers or accounts: it doesn't send your data to
+            anyone, including the developer.
+          </li>
+          <li><strong>No analytics, ads or trackers</strong>, and the extension doesn't load remote code.</li>
+          <li><strong>You decide when to delete:</strong> from Settings or by uninstalling the extension.</li>
+        </ul>
+
+        <h2>1. What data it handles</h2>
+        <div class="table-wrap">
+          <table>
+            <tr>
+              <th>Data</th>
+              <th>Where it comes from</th>
+              <th>What it's used for</th>
+            </tr>
+            <tr>
+              <td>TikTok username of each store</td>
+              <td>You type it when adding the store</td>
+              <td>Recognizing your lives and saving them per store</td>
+            </tr>
+            <tr>
+              <td>Display name and text of chat messages</td>
+              <td>The live page open in that tab</td>
+              <td>Showing the chat by person and creating orders from comments</td>
+            </tr>
+            <tr>
+              <td>Your customers' aliases and notes</td>
+              <td>You type them</td>
+              <td>Recognizing your customers in future lives</td>
+            </tr>
+            <tr>
+              <td>Catalog, stock, orders, discounts and payments</td>
+              <td>You record them or import them from a file</td>
+              <td>Running the CRM</td>
+            </tr>
+            <tr>
+              <td>Preferences (language, theme, active store, test mode, last backup)</td>
+              <td>Your choices in the panel</td>
+              <td>Remembering how you use the extension</td>
+            </tr>
+          </table>
+        </div>
+        <p>
+          Vendly reads the chat <strong>only</strong> from the TikTok Live tab you have open, and saves it only while the Vendly
+          panel is open. Lives from other accounts are saved only if you turn on "test mode" and ask for it on that live. Vendly
+          does <strong>not</strong> read or store passwords, private messages, payment data, your browsing history or the content
+          of other sites.
+        </p>
+
+        <h2>2. Where it's stored</h2>
+        <p>
+          In the extension's local storage, inside your Chrome profile, on that device. Nothing is synced or leaves your browser.
+          You can download an <strong>Excel</strong> file with a live's orders and a
+          <strong>backup</strong> (<code>.sqlite3</code>) with all your data. The backup isn't encrypted: keep it somewhere safe,
+          because it contains your customers' names and messages.
+        </p>
+
+        <h2>3. Who it's shared with</h2>
+        <p>
+          No one. Vendly doesn't sell, rent or transfer data to third parties, nor use it for advertising, creditworthiness or any
+          purpose other than its single purpose. The use of information complies with the
+          <a href="https://developer.chrome.com/docs/webstore/program-policies/user-data-faq">Chrome Web Store User Data Policy</a
+          >, including the Limited Use requirements.
+        </p>
+
+        <h2>4. Permissions</h2>
+        <ul>
+          <li><strong>Side panel:</strong> showing the CRM next to the live without covering the stream.</li>
+          <li><strong>Scripting:</strong> enabling capture on TikTok tabs that were already open when installing or updating.</li>
+          <li>
+            <strong>Access to <code>www.tiktok.com</code>:</strong> reading the chat of the open live. Outside a live page it only
+            checks the URL.
+          </li>
+        </ul>
+
+        <h2>5. How long it's kept and how to delete it</h2>
+        <ul>
+          <li>
+            <strong>Settings → Delete all my data:</strong> immediately deletes all your stores, with their catalog, customers,
+            orders and saved chat.
+          </li>
+          <li><strong>Uninstalling the extension:</strong> Chrome deletes all its local storage.</li>
+          <li>
+            <strong>Settings → Delete this store:</strong> hides the store and everything in it from the panel. Its data stays in
+            local storage until you use "Delete all my data" or uninstall the extension.
+          </li>
+        </ul>
+        <p>You delete any Excel and backup files you downloaded from your device.</p>
+
+        <h2>6. Third-party data</h2>
+        <p>
+          Live chat messages are public to everyone watching. Vendly stores them only on your device so you can handle orders. As
+          a seller, you're responsible for how you use them and for complying with the data protection laws that apply to you.
+        </p>
+
+        <h2>7. Minors</h2>
+        <p>Vendly is a tool for sellers and isn't directed at minors.</p>
+
+        <h2>8. Changes</h2>
+        <p>
+          If this policy changes, the new version is published here with an updated date. If it affects how your data is used,
+          it's announced on the extension's listing.
+        </p>
+
+        <h2>9. Contact</h2>
+        <p>Privacy questions, requests or complaints: <a href="mailto:salazar199925@gmail.com">salazar199925@gmail.com</a>.</p>
+      </article>
+
+      <article id="pt" lang="pt-BR">
+        <h1>Política de privacidade do Vendly</h1>
+        <p class="meta">
+          Vigente desde 27 de setembro de 2026 · Contato: <a href="mailto:salazar199925@gmail.com">salazar199925@gmail.com</a>
+        </p>
+        <p>
+          O Vendly é uma extensão do Chrome para quem vende em transmissões ao vivo: catálogo com estoque, captura do chat da
+          live, pedidos, pagamentos e relatórios. Esta política explica quais dados ele usa, onde ficam e como excluí-los.
+        </p>
+        <ul class="summary">
+          <li>
+            <strong>Tudo fica no seu navegador.</strong> O Vendly não tem servidores nem contas: não envia seus dados para
+            ninguém, nem para o desenvolvedor.
+          </li>
+          <li><strong>Sem análise, publicidade ou rastreadores</strong>, e a extensão não carrega código remoto.</li>
+          <li><strong>Você decide quando excluir:</strong> em Ajustes ou desinstalando a extensão.</li>
+        </ul>
+
+        <h2>1. Quais dados usa</h2>
+        <div class="table-wrap">
+          <table>
+            <tr>
+              <th>Dado</th>
+              <th>De onde vem</th>
+              <th>Para que é usado</th>
+            </tr>
+            <tr>
+              <td>Usuário do TikTok de cada loja</td>
+              <td>Você digita ao adicionar a loja</td>
+              <td>Reconhecer suas lives e salvá-las por loja</td>
+            </tr>
+            <tr>
+              <td>Nome exibido e texto das mensagens do chat</td>
+              <td>A página da live aberta naquela aba</td>
+              <td>Mostrar o chat por pessoa e criar pedidos a partir dos comentários</td>
+            </tr>
+            <tr>
+              <td>Apelidos e notas dos seus clientes</td>
+              <td>Você digita</td>
+              <td>Reconhecer seus clientes em lives futuras</td>
+            </tr>
+            <tr>
+              <td>Catálogo, estoque, pedidos, descontos e pagamentos</td>
+              <td>Você registra ou importa de um arquivo</td>
+              <td>O funcionamento do CRM</td>
+            </tr>
+            <tr>
+              <td>Preferências (idioma, tema, loja ativa, modo de teste, último backup)</td>
+              <td>Suas escolhas no painel</td>
+              <td>Lembrar como você usa a extensão</td>
+            </tr>
+          </table>
+        </div>
+        <p>
+          O Vendly lê o chat <strong>só</strong> da aba do TikTok Live que você tem aberta, e o salva só enquanto o painel do
+          Vendly está aberto. Lives de outras contas são salvas apenas se você ativar o "modo de teste" e pedir nessa live. O
+          Vendly <strong>não</strong> lê nem salva senhas, mensagens privadas, dados de pagamento, seu histórico de navegação nem
+          o conteúdo de outros sites.
+        </p>
+
+        <h2>2. Onde ficam</h2>
+        <p>
+          No armazenamento local da extensão, dentro do seu perfil do Chrome, naquele dispositivo. Nada é sincronizado nem sai do
+          seu navegador. Você pode baixar um <strong>Excel</strong> com os pedidos de uma live e um <strong>backup</strong>
+          (<code>.sqlite3</code>) com todos os seus dados. O backup não é criptografado: guarde-o em um lugar seguro, porque
+          contém os nomes e mensagens dos seus clientes.
+        </p>
+
+        <h2>3. Com quem são compartilhados</h2>
+        <p>
+          Com ninguém. O Vendly não vende, não aluga e não transfere dados a terceiros, nem os usa para publicidade, análise de
+          crédito ou qualquer finalidade diferente do seu propósito único. O uso das informações segue a
+          <a href="https://developer.chrome.com/docs/webstore/program-policies/user-data-faq"
+            >Política de dados do usuário da Chrome Web Store</a
+          >, incluindo os requisitos de uso limitado.
+        </p>
+
+        <h2>4. Permissões</h2>
+        <ul>
+          <li><strong>Painel lateral:</strong> mostrar o CRM ao lado da live, sem cobrir a transmissão.</li>
+          <li>
+            <strong>Injetar scripts:</strong> ativar a captura em abas do TikTok que já estavam abertas ao instalar ou atualizar.
+          </li>
+          <li>
+            <strong>Acesso a <code>www.tiktok.com</code>:</strong> ler o chat da live aberta. Fora de uma página de live, só
+            verifica a URL.
+          </li>
+        </ul>
+
+        <h2>5. Por quanto tempo ficam e como excluir</h2>
+        <ul>
+          <li>
+            <strong>Ajustes → Excluir todos os meus dados:</strong> exclui na hora todas as suas lojas, com catálogo, clientes,
+            pedidos e o chat salvo.
+          </li>
+          <li><strong>Desinstalar a extensão:</strong> o Chrome apaga todo o armazenamento local dela.</li>
+          <li>
+            <strong>Ajustes → Excluir esta loja:</strong> oculta a loja e tudo dela do painel. Os dados continuam no armazenamento
+            local até você usar "Excluir todos os meus dados" ou desinstalar a extensão.
+          </li>
+        </ul>
+        <p>Os arquivos de Excel e de backup que você baixou, você mesmo apaga do seu dispositivo.</p>
+
+        <h2>6. Dados de terceiros</h2>
+        <p>
+          As mensagens do chat de uma live são públicas para quem assiste. O Vendly as salva só no seu dispositivo para você
+          atender os pedidos. Como vendedor, você é responsável pelo uso que faz delas e por cumprir as leis de proteção de dados
+          que se aplicam a você.
+        </p>
+
+        <h2>7. Menores de idade</h2>
+        <p>O Vendly é uma ferramenta para vendedores e não é direcionado a menores de idade.</p>
+
+        <h2>8. Mudanças</h2>
+        <p>
+          Se esta política mudar, a nova versão é publicada aqui com a data atualizada. Se afetar o uso dos seus dados, isso é
+          avisado na página da extensão.
+        </p>
+
+        <h2>9. Contato</h2>
+        <p>
+          Dúvidas, pedidos ou reclamações sobre privacidade: <a href="mailto:salazar199925@gmail.com">salazar199925@gmail.com</a>.
+        </p>
+      </article>
+    </main>
+    <script>
+      // Muestra un idioma a la vez (el del enlace o el del navegador). Sin JavaScript se ven los tres.
+      ;(function () {
+        var langs = ['es', 'en', 'pt']
+        function show(lang) {
+          langs.forEach(function (code) {
+            document.getElementById(code).hidden = code !== lang
+            document.querySelector('nav a[data-lang="' + code + '"]').setAttribute('aria-current', String(code === lang))
+          })
+          document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang
+        }
+        function fromHash() {
+          var hash = location.hash.slice(1)
+          if (langs.indexOf(hash) >= 0) return hash
+          var browser = (navigator.language || 'es').slice(0, 2).toLowerCase()
+          return langs.indexOf(browser) >= 0 ? browser : 'es'
+        }
+        window.addEventListener('hashchange', function () {
+          show(fromHash())
+        })
+        show(fromHash())
+      })()
+    </script>
+  </body>
+</html>

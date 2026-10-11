@@ -1,6 +1,6 @@
 # vendly-site
 
-Página pública de [Vendly](https://drgerssonsr.github.io/vendly-site/), la extensión de Chrome para vender en lives:
+Página pública de [Vendly](https://vendly.moonlighting.site/), la extensión de Chrome para vender en lives:
 la landing y la política de privacidad. Hecha con [Astro](https://astro.build) y GSAP.
 
 - Landing: `src/pages/index.astro`, con una sección por componente en `src/components/`.
@@ -10,9 +10,9 @@ la landing y la política de privacidad. Hecha con [Astro](https://astro.build) 
 
 ```bash
 pnpm install
-pnpm dev        # http://localhost:4600/vendly-site/
+pnpm dev        # http://localhost:4600/
 pnpm build      # genera dist/
-pnpm preview    # sirve dist/ en http://localhost:4600/vendly-site/
+pnpm preview    # sirve dist/ en http://localhost:4600/
 ```
 
 ## Despliegue

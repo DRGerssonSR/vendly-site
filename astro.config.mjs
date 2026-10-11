@@ -1,8 +1,7 @@
 import { defineConfig } from 'astro/config'
 
-// Se publica en GitHub Pages: https://drgerssonsr.github.io/vendly-site/
+// Dominio propio en GitHub Pages: https://vendly.moonlighting.site/
 export default defineConfig({
-  site: 'https://drgerssonsr.github.io',
-  base: '/vendly-site',
+  site: 'https://vendly.moonlighting.site',
   trailingSlash: 'always',
 })

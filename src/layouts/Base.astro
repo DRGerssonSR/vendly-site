@@ -1,0 +1,44 @@
+---
+import '@fontsource-variable/bricolage-grotesque'
+import '@fontsource-variable/onest'
+import '@fontsource-variable/jetbrains-mono'
+import '../styles/global.css'
+import '../styles/panel.css'
+import { asset } from '../data/site'
+
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+const ogImage = new URL(asset('og.png'), Astro.site).href
+const url = new URL(asset(''), Astro.site).href
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0e0e11" />
+    <link rel="icon" type="image/png" sizes="32x32" href={asset('favicon-32.png')} />
+    <link rel="canonical" href={url} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={url} />
+    <meta property="og:locale" content="es_PE" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline>
+      document.documentElement.classList.add('js')
+    </script>
+  </head>
+  <body>
+    <slot />
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

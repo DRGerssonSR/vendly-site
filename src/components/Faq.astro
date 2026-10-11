@@ -1,0 +1,116 @@
+---
+import { EMAIL } from '../data/site'
+
+const items = [
+  { q: '¿Es gratis?', a: 'Sí. Instalarla y usarla no cuesta nada.' },
+  {
+    q: '¿Funciona en el celular?',
+    a: 'No. Es una extensión de Chrome para computadora: abres tu live en Chrome y Vendly aparece en el panel lateral, sin tapar la transmisión.',
+  },
+  {
+    q: '¿Dónde se guardan mis datos?',
+    a: 'En tu navegador. Vendly no tiene servidores ni cuentas, y no envía nada a terceros. Puedes descargar respaldos cuando quieras.',
+  },
+  {
+    q: '¿Es una herramienta oficial de TikTok?',
+    a: 'No. Es independiente, sin relación con TikTok ni avalada por TikTok. Organiza el chat que tú ya ves en tu live, y cada vendedor cumple los términos de la plataforma donde vende.',
+  },
+  {
+    q: '¿Encontré un error o tengo una idea?',
+    a: `Escríbeme a ${EMAIL}. Vendly está en sus primeras versiones y lo que me cuentes decide qué viene después.`,
+  },
+]
+---
+
+<section class="faq" id="preguntas">
+  <div class="container faq-grid">
+    <div>
+      <p class="eyebrow" data-reveal>Preguntas</p>
+      <h2 data-split>Lo que suelen preguntar.</h2>
+    </div>
+    <div class="list" data-reveal>
+      {items.map((it) => (
+        <details>
+          <summary>{it.q}</summary>
+          <p>{it.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    padding: clamp(80px, 11vw, 140px) 0;
+    background: var(--bg-deep);
+    border-top: 1px solid var(--line);
+  }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(28px, 6vw, 96px);
+  }
+  .faq-grid > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  h2 {
+    font-size: clamp(2.1rem, 4vw, 3.6rem);
+  }
+  details {
+    border-bottom: 1px solid var(--line);
+  }
+  details:first-child {
+    border-top: 1px solid var(--line);
+  }
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    list-style: none;
+    cursor: pointer;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    content: '+';
+    flex: none;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border: 1.5px solid var(--line);
+    border-radius: 50%;
+    color: var(--pink);
+    font-size: 1.5rem;
+    font-weight: 400;
+    transition:
+      transform 0.3s,
+      background-color 0.3s,
+      color 0.3s;
+  }
+  details[open] summary::after {
+    transform: rotate(45deg);
+    background: var(--pink);
+    border-color: var(--pink);
+    color: #fff;
+  }
+  details p {
+    max-width: 36em;
+    padding: 0 0 26px;
+    color: var(--soft);
+  }
+  @media (max-width: 860px) {
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

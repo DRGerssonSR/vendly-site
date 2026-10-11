@@ -1,0 +1,83 @@
+---
+import { STORE_URL } from '../data/site'
+---
+
+<section class="final" id="instalar">
+  <div class="ring r1" aria-hidden="true"></div>
+  <div class="ring r2" aria-hidden="true"></div>
+  <div class="container inner">
+    <p class="eyebrow" data-reveal>Vendly · gratis · Chrome</p>
+    <h2 data-split>Tu próximo live, en orden.</h2>
+    <div class="row" data-reveal>
+      <a class="btn btn-dark" href={STORE_URL} target="_blank" rel="noopener">
+        Instalar gratis en Chrome
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+      <button class="btn btn-outline" type="button" data-share>Enviarme el enlace</button>
+    </div>
+    <p class="fine" data-reveal>Solo en Chrome de computadora.</p>
+  </div>
+</section>
+
+<style>
+  .final {
+    position: relative;
+    isolation: isolate;
+    padding: clamp(100px, 16vw, 220px) 0;
+    background: var(--pink);
+    color: #fff;
+    overflow: clip;
+  }
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+  .eyebrow {
+    color: #fff;
+  }
+  h2 {
+    max-width: 9em;
+    font-size: clamp(3.4rem, 10vw, 10rem);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .btn-outline {
+    border-color: rgba(255, 255, 255, 0.9);
+    background: transparent;
+    color: #fff;
+  }
+  .btn-outline:hover {
+    background: #fff;
+    color: var(--pink-deep);
+    transform: translateY(-2px);
+  }
+  .fine {
+    font-size: 0.95rem;
+    opacity: 0.95;
+  }
+  .ring {
+    position: absolute;
+    z-index: -1;
+    border: 6px solid rgba(255, 255, 255, 0.22);
+    border-radius: 50%;
+  }
+  .r1 {
+    width: 900px;
+    height: 900px;
+    right: -260px;
+    bottom: -420px;
+  }
+  .r2 {
+    width: 560px;
+    height: 560px;
+    left: -220px;
+    top: -160px;
+  }
+</style>

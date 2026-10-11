@@ -1,0 +1,59 @@
+---
+const a = ['quiero la M porfa', 'cuánto cuesta??', 'me la separas', 'talla M', 'M o L???', 'mía!!', 'yo primero', 'la negra cuánto', 'pedido!!', 'tienen en L?']
+const b = ['talla M!!', 'quién pidió??', 'yo la azul', 'L', 'cuánto??', 'me la llevo', 'M M M', '¿cuál era la M?', 'la roja', 'separa mi pedido']
+---
+
+<section class="ticker" aria-label="Así se ve el chat de un live sin Vendly">
+  <p class="eyebrow container">Así se ve tu chat <b>sin Vendly</b></p>
+  <div class="row" data-dir="-1">
+    <div class="track">
+      {[...a, ...a].map((t, i) => <span class={`tk ${i % 3 === 0 ? 'hot' : ''}`}>{t}</span>)}
+    </div>
+  </div>
+  <div class="row" data-dir="1">
+    <div class="track">
+      {[...b, ...b].map((t, i) => <span class={`tk ${i % 4 === 1 ? 'hot' : ''}`}>{t}</span>)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ticker {
+    position: relative;
+    padding: 56px 0 64px;
+    border-block: 1px solid var(--line);
+    background: var(--bg-deep);
+    overflow: clip;
+  }
+  .eyebrow {
+    margin-bottom: 26px;
+  }
+  .row {
+    display: flex;
+    overflow: hidden;
+    padding: 9px 0;
+  }
+  .track {
+    display: flex;
+    flex: none;
+    gap: 14px;
+    padding-right: 14px;
+    will-change: transform;
+  }
+  .tk {
+    flex: none;
+    padding: 14px 28px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--soft);
+    font-size: clamp(1.1rem, 2.2vw, 1.7rem);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .tk.hot {
+    border-color: transparent;
+    background: var(--pink);
+    color: #fff;
+  }
+</style>

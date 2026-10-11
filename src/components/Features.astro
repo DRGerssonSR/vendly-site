@@ -1,0 +1,291 @@
+---
+---
+
+<section class="features" id="funciones">
+  <div class="container">
+    <div class="head">
+      <p class="eyebrow" data-reveal>Funciones</p>
+      <h2 data-split>Lo que necesitas durante el live. Nada más.</h2>
+    </div>
+
+    <div class="bento">
+      <article class="tile t-chat" data-reveal>
+        <h3>El chat, por persona</h3>
+        <p>Cada cliente con sus mensajes juntos. Buscador, alias y notas para reconocerlo en el próximo live.</p>
+        <div class="mini-rows" aria-hidden="true">
+          <div><span class="dot" style="background:#e8546f">M</span><b>Marcela R.</b><i>6 mensajes</i></div>
+          <div><span class="dot" style="background:#b0579e">J</span><b>Jhon_88</b><i>4 mensajes</i></div>
+          <div><span class="dot" style="background:#168581">L</span><b>Lucía P.</b><i>3 mensajes</i></div>
+        </div>
+      </article>
+
+      <article class="tile t-order" data-reveal>
+        <h3>Pedido con un clic</h3>
+        <p>Producto, talla y cantidad desde el comentario. Varias líneas por pedido.</p>
+        <div class="chips" aria-hidden="true"><span>S</span><span class="on">M</span><span>L</span><b>S/ 90.00</b></div>
+      </article>
+
+      <article class="tile t-stock" data-reveal>
+        <h3>Stock que no miente</h3>
+        <p>Físico, comprometido y disponible por talla. Si te pasas, avisa en rojo.</p>
+        <div class="cells" aria-hidden="true"><span>Físico <b>3</b></span><span>Comprometido <b>2</b></span><span class="ok">Disponible <b>1</b></span></div>
+      </article>
+
+      <article class="tile t-owe" data-reveal>
+        <p class="eyebrow">Por cobrar</p>
+        <div class="big mono" data-count="225" data-prefix="S/ " data-decimals="2">S/ 225.00</div>
+        <p>Lo que te deben y lo que ya cobraste, del live, al instante.</p>
+      </article>
+
+      <article class="tile t-safe" data-reveal>
+        <h3>Tus datos se quedan contigo</h3>
+        <p>Sin cuentas ni servidores. Todo vive en tu navegador y no se envía a terceros.</p>
+        <svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.5"></rect><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"></path><circle cx="12" cy="15.5" r="1.2"></circle></svg>
+      </article>
+
+      <article class="tile t-more" data-reveal>
+        <h3>Y también</h3>
+        <ul>
+          <li>Varias tiendas, cada una con su catálogo</li>
+          <li>Importa tu catálogo y exporta a Excel</li>
+          <li>Respaldos y tus lives anteriores</li>
+          <li>Español, portugués e inglés · tema claro u oscuro</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    padding: clamp(80px, 12vw, 160px) 0;
+    background: var(--bg);
+  }
+  .head {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: clamp(36px, 5vw, 64px);
+  }
+  h2 {
+    max-width: 15em;
+    font-size: clamp(2.2rem, 4.6vw, 4.2rem);
+  }
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: clamp(22px, 2.6vw, 34px);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    overflow: hidden;
+    transition:
+      border-color 0.3s,
+      transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .tile:hover {
+    border-color: #3d3d49;
+    transform: translateY(-4px);
+  }
+  .tile h3 {
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
+    line-height: 1.02;
+  }
+  .tile p {
+    max-width: 28em;
+    color: var(--soft);
+    font-size: 1rem;
+  }
+  .t-chat {
+    grid-column: span 7;
+    grid-row: span 2;
+    background: linear-gradient(160deg, #1d1d25, var(--surface));
+  }
+  .t-order,
+  .t-stock {
+    grid-column: span 5;
+  }
+  .t-owe {
+    grid-column: span 4;
+    background: var(--pink);
+    border-color: transparent;
+    color: #fff;
+  }
+  .t-owe p {
+    color: rgba(255, 255, 255, 0.94);
+  }
+  .t-owe .eyebrow {
+    color: #fff;
+  }
+  .t-safe {
+    grid-column: span 4;
+    background: var(--paper);
+    border-color: transparent;
+    color: var(--ink);
+  }
+  .t-safe p {
+    color: #3f414c;
+  }
+  .t-safe svg {
+    margin-top: auto;
+    color: var(--pink-deep);
+  }
+  .t-more {
+    grid-column: span 4;
+  }
+  .t-more ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--soft);
+  }
+  .t-more li {
+    position: relative;
+    padding-left: 22px;
+  }
+  .t-more li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 10px;
+    height: 2px;
+    background: var(--pink);
+  }
+  .big {
+    margin-top: auto;
+    font-size: clamp(2.6rem, 5vw, 4.4rem);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+  .mini-rows {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .mini-rows div {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .mini-rows .dot {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 700;
+  }
+  .mini-rows b {
+    flex: 1;
+    font-size: 1.1rem;
+  }
+  .mini-rows i {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-style: normal;
+    color: var(--muted);
+  }
+  .chips {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+  }
+  .chips span {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .chips span.on {
+    border-color: var(--pink);
+    background: var(--pink-soft);
+    color: var(--pink);
+  }
+  .chips b {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+  }
+  .cells {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+  }
+  .cells span {
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--soft);
+    font-size: 0.9rem;
+  }
+  .cells b {
+    margin-left: 6px;
+    font-family: var(--font-mono);
+    color: var(--text);
+  }
+  .cells .ok b {
+    color: var(--paid);
+  }
+
+  @media (min-width: 601px) and (max-width: 900px) {
+    .bento {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .t-chat {
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
+    .t-order,
+    .t-stock,
+    .t-owe,
+    .t-safe,
+    .t-more {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .t-more {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .bento {
+      grid-template-columns: 1fr;
+    }
+    .t-chat,
+    .t-order,
+    .t-stock,
+    .t-owe,
+    .t-safe,
+    .t-more {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .t-owe {
+      min-height: 220px;
+    }
+  }
+</style>

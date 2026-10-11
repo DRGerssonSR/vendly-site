@@ -1,0 +1,77 @@
+---
+import { EMAIL, STORE_URL, asset } from '../data/site'
+---
+
+<footer class="foot">
+  <div class="container foot-in">
+    <div class="brand-col">
+      <a class="brand" href="#top" aria-label="Vendly, ir al inicio">vendly<i></i></a>
+      <p>Una extensión de Chrome para vender en lives.</p>
+    </div>
+    <nav class="cols" aria-label="Enlaces">
+      <a href={STORE_URL} target="_blank" rel="noopener">Chrome Web Store</a>
+      <a href={asset('privacy/')}>Política de privacidad</a>
+      <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+    </nav>
+    <p class="legal">
+      Vendly es una herramienta independiente, sin relación con TikTok ni avalada por TikTok. Cada vendedor es
+      responsable de cumplir los términos de la plataforma donde vende.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    padding: 56px 0 44px;
+    border-top: 1px solid var(--line);
+    background: var(--bg-deep);
+  }
+  .foot-in {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px 60px;
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    text-decoration: none;
+  }
+  .brand i {
+    display: inline-block;
+    width: 0.3em;
+    height: 0.3em;
+    margin-left: 0.08em;
+    border-radius: 50%;
+    background: var(--pink);
+  }
+  .brand-col p {
+    margin-top: 6px;
+    color: var(--muted);
+  }
+  .cols {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cols a {
+    color: var(--soft);
+    text-decoration: none;
+  }
+  .cols a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .legal {
+    grid-column: 1 / -1;
+    max-width: 52em;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  @media (max-width: 700px) {
+    .foot-in {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

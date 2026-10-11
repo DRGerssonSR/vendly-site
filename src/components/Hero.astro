@@ -1,0 +1,342 @@
+---
+import { STORE_URL } from '../data/site'
+
+const rows = Array.from({ length: 6 }, (_, i) => i)
+---
+
+<section class="hero" id="top">
+  <div class="glow glow-a" aria-hidden="true"></div>
+  <div class="glow glow-b" aria-hidden="true"></div>
+
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow" data-reveal><b>Extensión de Chrome</b> · Gratis · Para vendedores de lives</p>
+
+      <h1 data-split><span class="ln">El chat va a <span class="glitch">mil.</span></span> <span class="ln">Tus pedidos no se pierden.</span></h1>
+
+      <p class="lead" data-reveal>
+        Vendly ordena el chat de tu live por cliente y arma cada pedido con un clic. Stock y cobros al día, sin salir
+        de Chrome.
+      </p>
+
+      <div class="cta-row" data-reveal>
+        <a class="btn btn-primary" href={STORE_URL} target="_blank" rel="noopener">
+          Instalar gratis en Chrome
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a class="btn btn-ghost" href="#como-funciona">Ver cómo funciona</a>
+      </div>
+
+      <p class="note mono" data-reveal>Chrome de computadora · sin cuentas · tus datos se quedan en tu navegador</p>
+
+      <div class="mobile-note" data-reveal>
+        <div>
+          <strong>¿Estás en el celular?</strong>
+          <span>Vendly funciona en Chrome de computadora. Mándate el enlace y ábrelo cuando vayas a transmitir.</span>
+        </div>
+        <button class="btn btn-ghost" type="button" data-share>Enviarme el enlace</button>
+      </div>
+    </div>
+
+    <div class="stage" id="stage" aria-hidden="true">
+      <div class="stage-in" id="stageIn">
+        <div class="feed" id="feed"></div>
+
+        <div class="vp hero-vp" id="hvp">
+          <div class="vp-head">
+            <span class="vp-logo">vendly<i></i></span>
+            <span class="vp-live">En vivo</span>
+          </div>
+          <div class="vp-tabs">
+            <span class="vp-tab on">Chat</span>
+            <span class="vp-tab">Pedidos</span>
+            <span class="vp-tab">Catálogo</span>
+            <span class="vp-tab">Clientes</span>
+            <span class="vp-tab">Ajustes</span>
+            <span class="vp-tabline"></span>
+          </div>
+          <div class="vp-view">
+            <div class="vp-search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+              Buscar por nombre, alias o mensaje
+            </div>
+            <div class="vp-stats">
+              <span><b>6</b> personas</span>
+              <span><b id="hMsgs">0</b> mensajes</span>
+            </div>
+            <div class="vp-card hlist" id="hlist">
+              {rows.map((i) => <div class="vp-row hrow" data-row={i}></div>)}
+            </div>
+            <div class="vp-card hstrip" id="hstrip">
+              <span class="hs-l">Por cobrar · <b id="hOrders">0</b></span>
+              <b class="hs-v" id="hOwe">S/ 0.00</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    isolation: isolate;
+    min-height: 100svh;
+    padding: 132px 0 72px;
+    display: flex;
+    align-items: center;
+    overflow: clip;
+  }
+  .glow {
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .glow-a {
+    width: 1100px;
+    height: 1100px;
+    right: -380px;
+    top: -420px;
+    background: radial-gradient(circle, rgba(254, 44, 85, 0.3) 0%, rgba(254, 44, 85, 0) 66%);
+  }
+  .glow-b {
+    width: 900px;
+    height: 900px;
+    left: -420px;
+    bottom: -380px;
+    background: radial-gradient(circle, rgba(37, 244, 238, 0.16) 0%, rgba(37, 244, 238, 0) 66%);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.96fr);
+    align-items: center;
+    gap: clamp(24px, 4vw, 72px);
+  }
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 26px;
+  }
+  .ln {
+    display: block;
+  }
+  h1 {
+    font-size: clamp(2.7rem, 5.6vw, 5.8rem);
+    line-height: 0.93;
+    letter-spacing: -0.045em;
+  }
+  .glitch {
+    position: relative;
+    display: inline-block;
+    color: var(--text);
+    text-shadow:
+      0.045em 0 var(--cyan),
+      -0.045em 0 var(--pink);
+    animation: glitch 4.2s steps(1, end) infinite;
+  }
+  @keyframes glitch {
+    0%,
+    86%,
+    100% {
+      text-shadow:
+        0.045em 0 var(--cyan),
+        -0.045em 0 var(--pink);
+      transform: translate(0);
+    }
+    88% {
+      text-shadow:
+        0.09em 0.02em var(--cyan),
+        -0.09em -0.02em var(--pink);
+      transform: translate(0.02em, 0);
+    }
+    91% {
+      text-shadow:
+        -0.07em 0 var(--cyan),
+        0.07em 0 var(--pink);
+      transform: translate(-0.025em, 0.01em);
+    }
+    94% {
+      text-shadow:
+        0.045em 0 var(--cyan),
+        -0.045em 0 var(--pink);
+      transform: translate(0);
+    }
+  }
+  .lead {
+    max-width: 34em;
+    color: var(--soft);
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .note {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  .mobile-note {
+    display: none;
+    width: 100%;
+    gap: 14px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .mobile-note strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+  }
+  .mobile-note span {
+    color: var(--soft);
+    font-size: 0.95rem;
+  }
+  .mobile-note .btn {
+    min-height: 48px;
+    font-size: 1.05rem;
+  }
+
+  /* escenario: chat que se ordena */
+  .stage {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    aspect-ratio: 700 / 600;
+    justify-self: end;
+  }
+  .stage-in {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 700px;
+    height: 600px;
+    transform-origin: 0 0;
+  }
+  /* oculto hasta que el script lo escala y lo llena: evita ver la versión sin escalar y el salto */
+  :global(html.js) .stage-in {
+    opacity: 0;
+  }
+  .feed {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 270px;
+    height: 560px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 70px, #000 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 70px, #000 100%);
+  }
+  .hero-vp {
+    left: 280px;
+    top: 20px;
+  }
+  .hlist {
+    position: relative;
+    height: 326px;
+    flex: none;
+  }
+  :global(.hrow) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+  .hstrip {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+    padding: 0 14px;
+    font-size: 12px;
+    font-weight: 650;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .hstrip b {
+    color: var(--ink);
+  }
+  .hs-v {
+    font-family: var(--font-mono);
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    color: var(--pending) !important;
+  }
+
+  :global(.bub) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: max-content;
+    max-width: 258px;
+    padding: 9px 22px 9px 9px;
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.11);
+    will-change: transform;
+  }
+  :global(.bub .av) {
+    flex: none;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  :global(.bub .meta) {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+  :global(.bub .un) {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #dcdee6;
+  }
+  :global(.bub .tx) {
+    font-size: 19px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  :global(.chip-fly) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--pink);
+    box-shadow: 0 0 24px 6px rgba(254, 44, 85, 0.7);
+  }
+
+  @media (max-width: 1100px) {
+    .hero {
+      padding-top: 104px;
+    }
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .stage {
+      justify-self: center;
+    }
+  }
+  @media (max-width: 960px) {
+    .mobile-note {
+      display: flex;
+    }
+  }
+</style>

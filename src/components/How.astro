@@ -1,0 +1,433 @@
+---
+const AV = ['#e8546f', '#168581', '#6b6fd6', '#d2883a', '#4f9d69', '#b0579e', '#4f86c6', '#8a7c5a']
+const avColor = (s: string) => {
+  let h = 0
+  for (const c of s.toLowerCase()) h = (h * 31 + c.charCodeAt(0)) >>> 0
+  return AV[h % AV.length]
+}
+
+const steps = [
+  { n: '01', t: 'Cada comentario, con su dueño.', d: 'El chat se agrupa por persona. Ves quién pidió qué sin perseguir comentarios que pasan a mil.' },
+  { n: '02', t: 'Un clic y es pedido.', d: 'Elige producto, talla y cantidad desde el comentario. Si te pasas del stock, te avisa en rojo y no te frena.' },
+  { n: '03', t: 'Quién te debe, al instante.', d: 'Por cobrar y cobrado del live, a la vista. Marca pagado con un toque cuando te llegue el yape.' },
+  { n: '04', t: 'El stock, siempre al día.', d: 'Físico, comprometido y disponible por talla. Cada pedido lo descuenta solo.' },
+]
+
+const people = [
+  { n: 'Marcela R.', u: 'mari_ok', s: 'quiero la M porfa', c: 6 },
+  { n: 'Jhon_88', u: 'jhon88', s: 'cuánto la negra?', c: 4 },
+  { n: 'Lucía P.', u: 'luciap', s: 'me la separas', c: 3 },
+  { n: 'Carlos V.', u: 'carlosv', s: 'talla L', c: 2 },
+  { n: 'Ana S.', u: 'anita.s', s: 'yo la azul', c: 2 },
+  { n: 'Dayana', u: 'dayana', s: 'quién pidió??', c: 1 },
+]
+
+const orders = [
+  { n: 'Marcela R.', u: 'mari_ok', s: '2 uds · Polo oversize M', a: 'S/ 90.00', st: 'pending' },
+  { n: 'Jhon_88', u: 'jhon88', s: '1 ud · Polo oversize L', a: 'S/ 45.00', st: 'pending' },
+  { n: 'Carlos V.', u: 'carlosv', s: '2 uds · Polo oversize L', a: 'S/ 90.00', st: 'pending' },
+  { n: 'Lucía P.', u: 'luciap', s: '3 uds · Polo oversize S', a: 'S/ 135.00', st: 'paid' },
+]
+---
+
+<section class="how" id="como-funciona">
+  <div class="how-pin" id="howPin">
+    <div class="container how-grid">
+      <div class="how-copy">
+        <p class="eyebrow">Cómo funciona</p>
+        <h2 data-split>Un live en cuatro movimientos.</h2>
+
+        <div class="prog" role="group" aria-label="Pasos de la demo">
+          {steps.map((s, i) => (
+            <button type="button" class="seg" data-seg={i} aria-label={`Ir al paso ${i + 1}: ${s.t}`}>
+              <span class="bar"><i></i></span>
+            </button>
+          ))}
+        </div>
+
+        <ol class="steps" id="steps">
+          {steps.map((s, i) => (
+            <li class:list={['hstep', { 'is-active': i === 0 }]} data-step={i} tabindex="0">
+              <span class="num mono">{s.n}</span>
+              <div>
+                <h3>{s.t}</h3>
+                <div class="d"><p>{s.d}</p></div>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <div class="now" id="now" aria-live="polite">
+          <span class="num mono" id="nowN">01</span>
+          <div>
+            <h3 id="nowT">{steps[0].t}</h3>
+            <p id="nowD">{steps[0].d}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-stage" id="howStage">
+        <div class="how-in" id="howIn" aria-hidden="true">
+          <div class="vp" id="wp">
+            <div class="vp-head">
+              <span class="vp-logo">vendly<i></i></span>
+              <span class="vp-live">En vivo</span>
+            </div>
+            <div class="vp-tabs">
+              <span class="vp-tab on" id="w-tab-chat">Chat</span>
+              <span class="vp-tab" id="w-tab-orders">Pedidos</span>
+              <span class="vp-tab" id="w-tab-cat">Catálogo</span>
+              <span class="vp-tab">Clientes</span>
+              <span class="vp-tab">Ajustes</span>
+              <span class="vp-tabline" id="w-tabline"></span>
+            </div>
+
+            <div class="vp-view" id="w-chat">
+              <div class="vp-search">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+                Buscar por nombre, alias o mensaje
+              </div>
+              <div class="vp-stats"><span><b>6</b> personas</span><span><b>18</b> mensajes</span></div>
+              <div class="vp-card">
+                {people.map((p, i) => (
+                  <div class="vp-row" id={`w-row${i}`}>
+                    <span class="avatar" style={`background:${avColor(p.u)}`}>{p.n[0]}</span>
+                    <span class="row-main">
+                      <span class="row-title">{p.n} <span class="handle">@{p.u}</span></span>
+                      <span class="row-sub">{p.s}</span>
+                    </span>
+                    <span class="counter" data-n={p.c}>{p.c}</span>
+                    <span class="act">
+                      <button class="btn btn-sm" id={`w-btn${i}`} tabindex="-1">+ Pedido</button>
+                      {i === 0 && <span class="pill pill-paid" id="w-done">✓ 2 uds</span>}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="vp-view" id="w-orders">
+              <div class="vp-card summary">
+                <div class="stat"><span class="stat-label">Por cobrar · 3</span><b id="w-owe" style="color: var(--pending)">S/ 225.00</b></div>
+                <div class="stat"><span class="stat-label">Cobrado · 1</span><b style="color: var(--paid)">S/ 135.00</b></div>
+              </div>
+              <div class="vp-card unitbox" id="w-units">
+                <div class="unit-title">Unidades por producto ▾</div>
+                <div class="urow"><span>Polo oversize negro · M</span><span class="mono"><i class="pd">2 pend.</i> · <i class="pg">0 pag.</i></span></div>
+                <div class="urow"><span>Polo oversize negro · L</span><span class="mono"><i class="pd">3 pend.</i> · <i class="pg">0 pag.</i></span></div>
+                <div class="urow"><span>Polo oversize negro · S</span><span class="mono"><i class="pd">0 pend.</i> · <i class="pg">3 pag.</i></span></div>
+              </div>
+              <div class="vp-card" id="w-orders-list">
+                {orders.map((o) => (
+                  <div class="o-row">
+                    <span class="avatar" style={`background:${avColor(o.u)}`}>{o.n[0]}</span>
+                    <span class="row-main"><span class="row-title">{o.n}</span><span class="row-sub">{o.s}</span></span>
+                    <span class="amt">{o.a}</span>
+                    <span class={`pill pill-${o.st}`}>{o.st === 'paid' ? 'Pagado' : 'Pendiente'}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="vp-view" id="w-cat">
+              <div class="vp-card product-card" id="w-pc1">
+                <div class="product-head"><span class="code-tag">CAM-01</span><span class="product-name">Polo oversize negro</span><span class="price">S/ 45.00</span></div>
+                <div class="stock-grid">
+                  <span class="stock-cell">S <b>5</b></span>
+                  <span class="stock-cell" id="w-cellM">M <b id="w-mB">3</b><small id="w-mSmall">de 3</small></span>
+                  <span class="stock-cell">L <b>2</b><small>de 5</small></span>
+                </div>
+              </div>
+              <div class="vp-card product-card" id="w-pc2">
+                <div class="product-head"><span class="code-tag">CAM-02</span><span class="product-name">Polo básico blanco</span><span class="price">S/ 35.00</span></div>
+                <div class="stock-grid">
+                  <span class="stock-cell">M <b>4</b></span>
+                  <span class="stock-cell">L <b>6</b></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="vp-backdrop" id="w-backdrop"></div>
+            <div class="vp-sheet" id="w-sheet">
+              <div class="grip"></div>
+              <div class="sheet-head">
+                <span class="avatar" style="background: #e8546f">M</span>
+                <span class="row-main"><span class="row-title">Pedido de Marcela R.</span><span class="handle">@mari_ok</span></span>
+                <span class="xbtn">×</span>
+              </div>
+              <div class="quote">quiero la M porfa</div>
+              <div class="step" id="w-stProduct">
+                <span class="step-label">Producto</span>
+                <div class="slot" id="w-slot">
+                  <div id="w-results">
+                    <div class="result first" id="w-res1"><span class="code-tag">CAM-01</span><span class="name">Polo oversize negro</span><span class="price">S/ 45.00</span></div>
+                    <div class="result"><span class="code-tag">CAM-02</span><span class="name">Polo básico blanco</span><span class="price">S/ 35.00</span></div>
+                  </div>
+                  <div class="picked" id="w-picked"><span class="code-tag">CAM-01</span><span class="name">Polo oversize negro</span><span class="price">S/ 45.00</span></div>
+                </div>
+              </div>
+              <div class="step" id="w-stVariant">
+                <span class="step-label">Variante <span class="req swap"><span class="a">elige una</span><span class="b" id="w-reqB">M</span></span></span>
+                <div class="chips">
+                  <span class="chip">S<small>5 disp.</small></span>
+                  <span class="chip" id="w-chM">M<small>3 disp.</small></span>
+                  <span class="chip">L<small>2 disp.</small></span>
+                </div>
+              </div>
+              <div class="step" id="w-stQty">
+                <div class="qty-row">
+                  <span class="stepper"><span>−</span><span class="qn swap"><span class="a">1</span><span class="b" id="w-qnB">2</span></span><span id="w-plus">+</span></span>
+                  <span class="pricebox"><span class="step-label">Precio unit.</span><span class="in">45.00</span></span>
+                </div>
+                <div class="stock-hint swap"><span class="a">Stock: quedarán 2</span><span class="b" id="w-hintB" style="color: var(--pending)">Stock: quedará 1</span></div>
+              </div>
+              <button class="save" id="w-save" tabindex="-1"><span class="swap"><span class="a">Guardar pedido · S/ 45.00</span><span class="b" id="w-saveB">Guardar pedido · S/ 90.00</span></span></button>
+            </div>
+
+            <div class="vp-toast" id="w-toast"><span>✓</span>&nbsp; Pedido de Marcela R. agregado · 2 uds</div>
+
+            <div class="vp-cur" id="w-cur">
+              <span class="ripple" id="w-ripple"></span>
+              <svg viewBox="0 0 22 28" id="w-curSvg"><path d="M1.5 1.5 L1.5 21 L6.5 16.5 L10 24.5 L13.5 23 L10 15 L17 15 Z" fill="#ffffff" stroke="#161823" stroke-width="1.8" stroke-linejoin="round"></path></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hint" id="hint" aria-hidden="true">
+      <span class="mono">Sigue bajando</span>
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"></path></svg>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ steps }} is:inline>
+  window.__howSteps = steps
+</script>
+
+<style>
+  .how {
+    position: relative;
+    background: var(--bg);
+  }
+  .how-pin {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: 90px 0 36px;
+    overflow: clip;
+  }
+  .how-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: clamp(24px, 5vw, 80px);
+  }
+  .how-copy {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 2.4svh, 22px);
+  }
+  /* El alto de la pantalla manda: así todo el bloque cabe en laptops bajitas mientras la sección está fija. */
+  h2 {
+    font-size: clamp(1.9rem, min(4.6vw, 8svh), 4.2rem);
+  }
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: clamp(0px, 1svh, 14px) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .hstep {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 6px;
+    padding: clamp(9px, 1.9svh, 16px) 0 clamp(9px, 1.9svh, 16px) 18px;
+    border-left: 2px solid var(--line);
+    opacity: 0.38;
+    transition:
+      opacity 0.4s,
+      border-color 0.4s,
+      padding 0.4s;
+  }
+  /* Solo el paso activo muestra su descripción; los demás quedan en una línea. */
+  .hstep .d {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .hstep .d > p {
+    min-height: 0;
+    overflow: hidden;
+  }
+  .hstep.is-active .d {
+    grid-template-rows: 1fr;
+  }
+  .hstep.is-active {
+    opacity: 1;
+    border-color: var(--pink);
+    padding-left: 26px;
+  }
+  .num {
+    padding-top: 6px;
+    color: var(--pink);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+  .hstep h3,
+  .now h3 {
+    margin-bottom: 4px;
+    font-size: clamp(1.15rem, min(2vw, 3.6svh), 1.75rem);
+    line-height: 1.05;
+  }
+  .hstep p,
+  .now p {
+    max-width: 30em;
+    color: var(--soft);
+    font-size: 1rem;
+  }
+  .now {
+    display: none;
+  }
+  .hstep {
+    cursor: pointer;
+  }
+  .prog {
+    display: flex;
+    gap: 8px;
+  }
+  .seg {
+    flex: 1;
+    display: grid;
+    align-items: center;
+    height: 26px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+  .bar {
+    position: relative;
+    height: 6px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--line);
+  }
+  .bar i {
+    position: absolute;
+    inset: 0;
+    background: var(--pink);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+  }
+  .hint {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(36px, 5svh, 48px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    translate: -50% 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+  .hint svg {
+    animation: nudge 1.3s ease-in-out infinite;
+  }
+  @keyframes nudge {
+    0%,
+    100% {
+      transform: translateY(-2px);
+    }
+    50% {
+      transform: translateY(4px);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hint svg {
+      animation: none;
+    }
+  }
+
+  .how-stage {
+    position: relative;
+    width: 100%;
+    height: min(82svh, 820px);
+    display: grid;
+    place-items: center;
+  }
+  .how-in {
+    position: relative;
+    flex: none;
+  }
+
+  :global(#wp .vp-view) {
+    opacity: 0;
+    pointer-events: none;
+  }
+  :global(#wp #w-chat) {
+    opacity: 1;
+  }
+  :global(#wp .vp-backdrop) {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 18, 26, 0.5);
+    opacity: 0;
+  }
+
+  @media (min-width: 600px) and (max-width: 960px) {
+    .how-stage {
+      height: min(64svh, 700px);
+    }
+  }
+
+  @media (max-height: 740px) and (min-width: 961px) {
+    .how-pin {
+      padding: 84px 0 48px;
+    }
+    .eyebrow {
+      display: none;
+    }
+  }
+
+  @media (max-width: 960px) {
+    .how-pin {
+      padding: 84px 0 20px;
+      align-items: flex-start;
+    }
+    .how-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .how-copy {
+      gap: 10px;
+    }
+    h2 {
+      font-size: 1.9rem;
+    }
+    .steps {
+      display: none;
+    }
+    .now {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      order: 3;
+      min-height: 120px;
+    }
+    .how-stage {
+      order: 2;
+      height: min(54svh, 520px);
+    }
+    .eyebrow {
+      display: none;
+    }
+  }
+</style>

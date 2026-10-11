@@ -1,0 +1,84 @@
+---
+import { STORE_URL } from '../data/site'
+---
+
+<header class="nav" id="nav">
+  <div class="container nav-in">
+    <a class="brand" href="#top" aria-label="Vendly, ir al inicio">vendly<i></i></a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#funciones">Funciones</a>
+      <a href="#a-tu-medida">A tu medida</a>
+    </nav>
+    <a class="btn btn-primary nav-cta" href={STORE_URL} target="_blank" rel="noopener">Instalar gratis</a>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 50;
+    transition:
+      background-color 0.3s,
+      backdrop-filter 0.3s,
+      border-color 0.3s;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.is-stuck {
+    background: rgba(14, 14, 17, 0.78);
+    backdrop-filter: blur(14px) saturate(1.4);
+    border-color: var(--line);
+  }
+  .nav-in {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    height: 76px;
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    text-decoration: none;
+  }
+  .brand i {
+    display: inline-block;
+    width: 0.3em;
+    height: 0.3em;
+    margin-left: 0.08em;
+    border-radius: 50%;
+    background: var(--pink);
+  }
+  .links {
+    display: flex;
+    gap: 34px;
+    margin-left: auto;
+    margin-right: 12px;
+  }
+  .links a {
+    color: var(--soft);
+    font-size: 0.98rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .links a:hover {
+    color: #fff;
+  }
+  .nav-cta {
+    min-height: 44px;
+    padding: 0 1.2em;
+    font-size: 1rem;
+  }
+  @media (max-width: 820px) {
+    .links {
+      display: none;
+    }
+    .nav-in {
+      height: 68px;
+    }
+  }
+</style>

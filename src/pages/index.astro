@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro'
+import Nav from '../components/Nav.astro'
+import Hero from '../components/Hero.astro'
+import Ticker from '../components/Ticker.astro'
+import How from '../components/How.astro'
+import Videos from '../components/Videos.astro'
+import Features from '../components/Features.astro'
+import Hire from '../components/Hire.astro'
+import Faq from '../components/Faq.astro'
+import FinalCta from '../components/FinalCta.astro'
+import Footer from '../components/Footer.astro'
+---
+
+<Base
+  title="Vendly · Ordena el chat de tu live y arma pedidos con un clic"
+  description="Extensión gratis de Chrome para vendedores de lives: chat agrupado por cliente, pedidos con un clic, stock y cobros al día. Tus datos se quedan en tu navegador."
+>
+  <Nav />
+  <main>
+    <Hero />
+    <Ticker />
+    <How />
+    <Videos />
+    <Features />
+    <Hire />
+    <Faq />
+    <FinalCta />
+  </main>
+  <Footer />
+  <script>
+    import '../scripts/main.ts'
+  </script>
+</Base>

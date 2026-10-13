@@ -1,6 +1,6 @@
 export const STORE_URL =
   "https://chromewebstore.google.com/detail/vendly/nhmlejopnhofdhipibokklbaiopceiio?hl=es";
-export const EMAIL = "salazar199925@gmail.com";
+export const EMAIL = "vendly1999@gmail.com";
 
 /**
  * Clave pública de Web3Forms (https://web3forms.com) para que el formulario de contacto llegue al correo sin depender
